@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contact details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class = "container mt-5">
+    <div th:each="el : ${contact}" class="alert alert-info mt-2">
+        <h1 th:text="${el.name} + ' ' + ${el.surname}"/>
+        <p th:text="${el.mobile}" />
+        <p th:text="${el.home}" />
+        <p th:text="${el.info}" />
+        <a th:href="'/contact/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
+        <form th:action="'/contact/' + ${el.id} + '/delete'" method="post">
+            <button class="btn btn-warning" type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
